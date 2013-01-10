@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title><%= t("COMPANY_NAME") %></title>
+    <script src="/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body style="padding-top: 50px;">
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+
+            <a class="brand" href="#">
+              <%= t("COMPANY_NAME") %>
+            </a>
+
+            <ul class="nav">
+              <% for item in navitems %>
+                  <li><a href="<%= item.path %>"><%= item.title %></a></li>
+              <% end %>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#"
+                      class="dropdown-toggle"
+                      data-toggle="dropdown">
+                      <%=username%>
+                      <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                      <li><a href="/login/form"><%= t("nav.menu.LOGIN") %></a></li>
+                      <li><a href="/logout"><%= t("nav.menu.LOGOUT") %></a></li>
+                </ul>
+              </li>
+            </ul>
+
+
+        </div>
+      </div>
+    </div>
+
+	<div class="container">
+		<%if @error then %>
+			<div class="alert alert-error"><%=@error%></div>
+		<% end %>
+    	<%= yield %>
+	</div>
+	
+	<footer class="footer-fixed">
+		<p class="muted middle">
+			<%= t("POWERED_BY")%>
+			<img src="/img/legux_logo.png" width="25px" height="25px" align="middle"> 
+			<a href="http://www.legux.com"><%= t("LEGUX_SYSTEMS") %></a>
+		</p>
+	</footer>
+	
+  </body>
+</html>

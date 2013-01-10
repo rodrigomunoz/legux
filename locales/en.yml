@@ -1,0 +1,17 @@
+en:
+  COMPANY_NAME: "Legux"
+  LEGUX_NAME: "Legux"
+  LEGUX_SYSTEMS: "Legux Systems"
+  POWERED_BY: "Powered by"
+  STRANGER: "Click to log-in"
+  login:
+    USERNAME: "Username"
+    LOGIN: "Log-in"
+    LOGIN_ERROR: "Sorry guacamole, you need to be logged in to do that"
+    LOGGED_OUT: "Logged out"
+  nav:
+    HOME: "Home"
+    SECRET: "Secret"
+    menu:
+      LOGIN: "Login"
+      LOGOUT: "Logout"
