@@ -32,10 +32,11 @@ end
 ## secured routes
 unless DB.table_exists?( :users )
   DB.create_table :users  do
-    primary_key  :username
+    String   :username, :primary_key => true
     String   :displayName
-    String   :password
+    String   :password, :null => false
+    String   :passwordSalt, :null => false
     String   :eMail
-    Integer  :permissions
+    Integer  :type
   end
 end

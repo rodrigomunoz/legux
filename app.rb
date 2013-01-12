@@ -3,6 +3,7 @@ require 'bundler/setup'
 require 'sinatra/base'
 require 'i18n'
 require 'haml'
+require 'bcrypt'
 
 class Legux < Sinatra::Base
 
@@ -24,7 +25,7 @@ class Legux < Sinatra::Base
 
 end
 
-require_relative 'database/create_tables'
+require_relative 'database/create'
 require_relative 'model/init'
 require_relative 'helpers/init'
 require_relative 'routes/init'
