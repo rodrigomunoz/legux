@@ -1,6 +1,3 @@
-require 'sequel'
-require 'mysql2'
-
 # Configuration for Database (Sequel)
 DB = Sequel.connect(
     :adapter => 'mysql2',
@@ -32,11 +29,12 @@ end
 ## secured routes
 unless DB.table_exists?( :users )
   DB.create_table :users  do
-    String   :username, :primary_key => true
+    primary_key :id
+    String   :username
     String   :displayName
     String   :password, :null => false
     String   :passwordSalt, :null => false
-    String   :eMail
+    String   :email
     Integer  :type
   end
 end

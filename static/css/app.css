@@ -9,3 +9,9 @@ footer.footer-fixed {
 p.middle{
    text-align: center;
 }
+.required{
+    color: red;
+}
+.header-description{
+    color: #5a5a5a;
+}

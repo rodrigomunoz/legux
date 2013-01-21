@@ -1,0 +1,14 @@
+<h2><%= @form.title %></h2>
+<form action='<%= @form.action %>' method='post' class="form-horizontal">
+  <% for input in @form.inputs %>
+    <%= @input=input
+        erb :input_template %>
+  <% end %>
+  <div class="control-group">
+    <div class="controls">
+      <% for button in @form.buttons %>
+          <input class="btn primary" type='submit' value='<%= button %>'>
+      <% end %>
+    </div>
+  </div>
+</form>

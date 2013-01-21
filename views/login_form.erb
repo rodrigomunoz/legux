@@ -1,5 +1,25 @@
-<form action='/login/attempt' method='post' class="form-inline well">
-  <input name='username' placeholder="<%= t("login.USERNAME") %>" autofocus>
-  <input name='password' type="password">
-  <input class="btn primary" type='submit' value='<%= t("login.LOGIN") %>'>
+<form action='/login/attempt' method='post' class="form-signin">
+  <h2 class="form-signin-heading"><%= t("login.HEADER_TITLE") %></h2>
+  <div class="control-group">
+    <label class="control-label" for="username"><%= t("login.USERNAME") %></label>
+    <div class="controls">
+      <input class="input-block-level" name='username' type="text" placeholder="<%= t("login.USERNAME") %>" autofocus>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="password"><%= t("login.PASSWORD") %></label>
+    <div class="controls">
+      <input class="input-block-level" name='password' type="password" placeholder="<%= t("login.PASSWORD") %>">
+    </div>
+  </div>
+  <%if @error then %>
+      <div class="alert alert-error"><%= @error %></div>
+  <%elsif @warning then%>
+      <div class='alert alert-message'><%= @warning %></div>
+  <% end %>
+  <div class="control-group">
+    <div class="controls">
+      <input class="btn btn-primary" type='submit' value='<%= t("login.LOGIN") %>'>
+    </div>
+  </div>
 </form>

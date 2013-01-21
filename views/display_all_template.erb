@@ -1,0 +1,19 @@
+<h2><%= @title %></h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <% for item in @columns %>
+        <th><%= item %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% for item in @data %>
+    <tr>
+      <% item.each { |key, value| %>
+        <%= "<td>#{value}</td>" %>
+      <% } %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

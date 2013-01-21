@@ -33,12 +33,16 @@
                       <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                      <li><a href="/login/form"><%= t("nav.menu.LOGIN") %></a></li>
-                      <li><a href="/logout"><%= t("nav.menu.LOGOUT") %></a></li>
+                  <% for item in menuitems %>
+                    <% if item.instance_of? NavigationItem then %>
+                      <li><a href="<%= item.path %>"><%= item.title %></a></li>
+                    <% else %>
+                      <li class="divider"></li>
+                    <% end %>
+                  <% end %>
                 </ul>
               </li>
             </ul>
-
 
         </div>
       </div>
@@ -46,18 +50,32 @@
 
 	<div class="container">
 		<%if @error then %>
-			<div class="alert alert-error"><%=@error%></div>
+		  <div class="alert alert-error"><%=@error%></div>
+        <% end %>
+        <% if @success then %>
+          <div class="alert alert-success"><%=@success%></div>
 		<% end %>
-    	<%= yield %>
+        <!--Show two columns if there is a leftnav variable defined -->
+        <%if @leftnav then %>
+          <div class="row-fluid">
+            <div class="span3">
+              <!--Sidebar content-->
+              <ul class="nav nav-tabs nav-stacked">
+                <% for item in @leftnav %>
+                    <li><a href="<%= item.path %>"><i class="icon-chevron-right"></i> <%= item.title %></a></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="span9 well">
+              <!--Body content-->
+              <%= yield %>
+            </div>
+          </div>
+        <% else %>
+          <%= yield %>
+        <% end %>
 	</div>
-	
-	<footer class="footer-fixed">
-		<p class="muted middle">
-			<%= t("POWERED_BY")%>
-			<img src="/img/legux_logo.png" width="25px" height="25px" align="middle"> 
-			<a href="http://www.legux.com"><%= t("LEGUX_SYSTEMS") %></a>
-		</p>
-	</footer>
-	
+
+    <%= erb :footer %>
   </body>
 </html>
