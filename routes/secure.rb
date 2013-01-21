@@ -60,7 +60,7 @@ class Legux < Sinatra::Base
     if params['password'] != params['passwordconfirm'] then
       @error = t("users.ERROR_PASSWORD_CONFIRMATION")
     else
-      if createUser then
+      if createUserFromParams then
         @success = t("users.SUCCESS_CREATION", :username => params['username'])
       end
     end

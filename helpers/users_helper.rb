@@ -1,23 +1,31 @@
 module UsersHelper
 
-  def createUser
+  def createUser(username, password, displayName, email, type)
     password_salt = BCrypt::Engine.generate_salt
-    password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
-    displayName = params[:displayname]
-    if displayName.nil?
-      displayName = username
+    password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    display_name = displayName
+    if display_name.nil?
+      display_name = username
     end
     user = User.create(
-        :username => params[:username],
+        :username => username,
         :password => password_hash,
         :passwordSalt => password_salt,
-        :displayName => displayName,
-        :email => params[:email],
-        :type => 0
+        :displayName => display_name,
+        :email => email,
+        :type => type
     )
   rescue Sequel::ValidationFailed => e
     @error = e
     false
+  end
+
+  def createUserFromParams
+    createUser(params[:username], params[:password], params[:displayname], params[:email], params[:type])
+  end
+
+  def createAdministratorUser
+    createUser("administrator", "a", "Administrator", "", 0)
   end
 
   def updateUserDisplayName(displayName)
