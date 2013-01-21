@@ -1,11 +1,6 @@
 # Configuration for Database (Sequel)
-DB = Sequel.connect(
-    :adapter => 'mysql2',
-    :host => 'localhost',
-    :port => 3307,
-    :database => 'legux',
-    :user => 'root',
-    :password=> 'root')
+# Use Heroku's environment variable or a postgres local database
+DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://postgres:root@localhost:5432/legux')
 
 # Create tables for database
 # String, Integer, Fixnum, Bignum, Float, Numeric, BigDecimal,

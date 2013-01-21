@@ -4,7 +4,7 @@ require 'sinatra/base'
 require 'i18n'
 require 'haml'
 require 'sequel'
-require 'mysql2'
+require 'pg'
 require 'bcrypt'
 require 'json'
 
