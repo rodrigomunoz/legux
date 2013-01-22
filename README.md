@@ -23,3 +23,21 @@ Installation
 1. Run the application
  * ``bundle exec rackup config.ru``
  * The page will be in http://localhost:4567 by default
+
+ 
+Deployment in Heroku
+------------
+1. Make sure to have your Gemfile and require dependencies to PostgreSQL (gem 'pg')
+1. Login to Heroku ``heroku login`` using your Git Bash
+ * If a site hasn't been created ``heroku create``
+1. Deploy your code
+ * ``git push heroku master``
+ * ``git push heroku yourbranch:master``
+1. Make sure to have the PostgreSQL available by typing ``heroku addons``
+ * If a DB is not available create one with ``heroku addons:add heroku-postgresql:dev``
+ * And promote it to the environment varialbe ``DATABASE_URL`` by running ``heroku pg:promote HEROKU_POSTGRESQL_<NAME>_URL``
+ * [More information](https://devcenter.heroku.com/articles/heroku-postgresql)
+1. Start dyno so your application can be available on the web ``heroku ps:scale web=1``
+ * When not using it, make sure to change it back to ``0``. Heroku provides a limited number of free hours a month
+ * Check the status with ``heroku ps``
+ * Open the logs with ``heroku logs``
