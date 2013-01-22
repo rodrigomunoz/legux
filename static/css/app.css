@@ -1,0 +1,17 @@
+footer.footer-fixed {
+   position:absolute;
+   text-align: right;
+   vertical-align: middle;
+   bottom:0;
+   width:100%;
+   height:35px;
+}
+p.middle{
+   text-align: center;
+}
+.required{
+    color: red;
+}
+.header-description{
+    color: #5a5a5a;
+}

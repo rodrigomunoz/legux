@@ -1,0 +1,52 @@
+en:
+  COMPANY_NAME: "Legux"
+  LEGUX_NAME: "Legux"
+  LEGUX_SYSTEMS: "Legux Systems"
+  POWERED_BY: "Powered by"
+  CLICK_TO_LOGIN: "Click to log-in"
+  REQUIRED: "Required"
+  globalerror:
+    404_NOT_FOUND: "Sorry, that page does not exist."
+    500_COULD_NOT_CONNECT: "Sorry, the page has encountered an error."
+    ERROR_DESCRIPTION: "You are going to have to go Home and try again! Or contact the System Administrator for more information."
+  nav:
+    HOME: "Home"
+    SECRET: "Secret"
+    menu:
+      LOGIN: "Login"
+      EDIT_MY_PROFILE: "Edit My Profile"
+      CHANGE_MY_PASSWORD: "Change My Password"
+      SITE_ADMIN: "Site Administration"
+      LOGOUT: "Logout"
+  sequel:
+    ERROR_EXACT_LENGTH: "iis not #{exact} characters"
+    ERROR_NOT_PRESENT: "iis not present"
+    ERROR_USERNAME_FORMAT: "can only contain lowercase character (a-z), numbers (0-9) and dots (.)"
+    ERROR_EMAIL_FORMAT: "is not a valid e-mail address"
+  login:
+    HEADER_TITLE: "Please Log-in"
+    USERNAME: "Username"
+    PASSWORD: "Password"
+    LOGIN: "Log-in"
+    LOGIN_ERROR: "Log-in first in order to be able to access this page"
+    LOGGED_OUT: "Logged out"
+    ERROR_INVALID_USERNAME: "Username is invalid or non-existent"
+    ERROR_INVALID_PASSWORD: "Password is incorrect"
+  me:
+    UPDATE_DISPLAY_NAME: "Update display name"
+    UPDATE: "Update"
+    SUCCESS_UPDATE: "Update has been successful"
+    ERROR_UPDATE: "Update encountered an error. Please try again"
+  users:
+    CREATE_USERS: "Create Users"
+    USERNAME_INSTRUCTIONS: "Username should only contain lowercase character (a-z), numbers (0-9) and dots (.)"
+    CREATE_USER: "Create User"
+    USERNAME: "Username"
+    DISPLAY_NAME: "Display Name"
+    TYPE: "Admin?"
+    E_MAIL: "E-mail Address"
+    CONFIRM_PASSWORD: "Password Confirmation"
+    ERROR_PASSWORD_CONFIRMATION: "Both passwords should match"
+    SUCCESS_CREATION: "User has been properly created"
+    DISPLAY_ALL_USERS: "Display All Users"
+
