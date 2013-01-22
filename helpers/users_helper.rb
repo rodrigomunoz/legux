@@ -19,6 +19,7 @@ module UsersHelper
     @error = e
     false
   end
+  module_function :createUser
 
   def createUserFromParams
     createUser(params[:username], params[:password], params[:displayname], params[:email], params[:type])
@@ -27,6 +28,7 @@ module UsersHelper
   def createAdministratorUser
     createUser("administrator", "a", "Administrator", "", 0)
   end
+  module_function :createAdministratorUser
 
   def updateUserDisplayName(displayName)
     user = User.filter(:username => session[:identity]).first

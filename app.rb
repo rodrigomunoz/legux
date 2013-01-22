@@ -24,6 +24,7 @@ class Legux < Sinatra::Base
   I18n.default_locale = :en
   I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
   I18n.fallbacks[:es] = [:en]
+
 end
 
 require_relative 'database/create'
@@ -31,3 +32,4 @@ require_relative 'helpers/init'
 require_relative 'model/init'
 require_relative 'routes/init'
 require_relative 'database/error_messages'
+require_relative 'database/initialize'

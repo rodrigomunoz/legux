@@ -1,5 +1,3 @@
-require_relative '../helpers/site_helper' # *vomit*
-
 # From database tables
 require_relative 'client'
 require_relative 'user'
