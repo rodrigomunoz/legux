@@ -1,8 +1,23 @@
 <h2><%= @form.title %></h2>
 <form action='<%= @form.action %>' method='post' class="form-horizontal">
   <% for input in @form.inputs %>
-    <%= @input=input
-        erb :input_template %>
+    <% @input = input %>
+    <div class='control-group'>
+      <label class='control-label' for='<%= input.inputName %>'><%= input.inputDisplay %></label>
+      <div class='controls'>
+
+        <!-- show a different type of input -->
+        <% if input.instance_of? FormInput then %>
+        <%= erb :input_template %>
+        <% elsif input.instance_of? FormDropdown then %>
+        <%= erb :dropdown_template %>
+        <% end %>
+
+        <% if !input.instructions.empty? then %>
+        <span class='help-block'><small><%= input.instructions %></small></span>
+        <% end %>
+        </div>
+    </div>
   <% end %>
   <div class="control-group">
     <div class="controls">

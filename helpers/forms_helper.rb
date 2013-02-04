@@ -7,9 +7,25 @@ module FormsHelper
     @form.addInput(:passwordconfirm, t("users.CONFIRM_PASSWORD"), "password", true)
     @form.addInput(:displayname, t("users.DISPLAY_NAME"), "text", true)
     @form.addInput(:email, t("users.E_MAIL"), "text", false)
+    @form.addDropdown(:type, t("users.TYPE"),
+                      Hash[t("users.BASIC_USER"), UserType::BASIC_USER,
+                           t("users.SYSTEM_ADMINISTRATOR"), UserType::ADMINISTRATOR])
 
-    # TODO: Add dropdown to select user type
     @form.addButton(t("users.CREATE_USER"))
+
+    @form.bindWithParams(params)
+  end
+
+  def editUserForm(params = nil)
+    @form = Form.new(t("users.EDIT_USER"), "/secure/users/edit/")
+    @form.addInput(:username, t("login.USERNAME"), "text", true, t("users.USERNAME_INSTRUCTIONS"))
+    @form.addInput(:displayname, t("users.DISPLAY_NAME"), "text", true)
+    @form.addInput(:email, t("users.E_MAIL"), "text", false)
+    @form.addDropdown(:type, t("users.TYPE"),
+                      Hash[t("users.BASIC_USER"), UserType::BASIC_USER,
+                           t("users.SYSTEM_ADMINISTRATOR"), UserType::ADMINISTRATOR])
+
+    @form.addButton(t("users.EDIT_USER"))
 
     @form.bindWithParams(params)
   end

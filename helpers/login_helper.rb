@@ -10,6 +10,7 @@ module LoginHelper
       if user[:password] == BCrypt::Engine.hash_secret(params['password'], user[:passwordSalt])
         session[:identity] = user[:username]
         session[:identityDisplay] = user[:displayName]
+        session[:privileges] = user[:type]
       else
         @error = t("login.ERROR_INVALID_PASSWORD")
       end

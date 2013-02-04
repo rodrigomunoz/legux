@@ -6,6 +6,7 @@ en:
   CLICK_TO_LOGIN: "Click to log-in"
   REQUIRED: "Required"
   globalerror:
+    401_NOT_AUTHORIZED: "Sorry, you don't have access to access that page."
     404_NOT_FOUND: "Sorry, that page does not exist."
     500_COULD_NOT_CONNECT: "Sorry, the page has encountered an error."
     ERROR_DESCRIPTION: "You are going to have to go Home and try again! Or contact the System Administrator for more information."
@@ -43,10 +44,13 @@ en:
     CREATE_USER: "Create User"
     USERNAME: "Username"
     DISPLAY_NAME: "Display Name"
-    TYPE: "Admin?"
+    TYPE: "Privileges"
     E_MAIL: "E-mail Address"
     CONFIRM_PASSWORD: "Password Confirmation"
     ERROR_PASSWORD_CONFIRMATION: "Both passwords should match"
     SUCCESS_CREATION: "User has been properly created"
     DISPLAY_ALL_USERS: "Display All Users"
+    SYSTEM_ADMINISTRATOR: "System administrator"
+    BASIC_USER: "Basic user"
+    EDIT_USER: "Edit User"
 

@@ -16,6 +16,10 @@ class Form
     @inputs.push FormInput.new(inputName, inputDisplay, inputType, required, instructions, value)
   end
 
+  def addDropdown(inputName, inputDisplay, options, instructions = "", value = "")
+    @inputs.push FormDropdown.new(inputName, inputDisplay, options, instructions, value)
+  end
+
   def addButton(label)
     @buttons.push label
   end

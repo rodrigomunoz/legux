@@ -1,9 +1,1 @@
-<div class='control-group'>
-  <label class='control-label' for='<%= @input.inputName %>'><%= @input.inputDisplay %></label>
-  <div class='controls'>
-    <input name='<%= @input.inputName %>' type='<%= @input.inputType %>' placeholder='<%= @input.inputDisplay %>' value='<%= @input.value %>' <% if !@input.required then %>><% else %>required='required'><span class='required' title='<%=t("REQUIRED")%>'> *</span><% end %>
-    <% if !@input.instructions.empty? then %>
-      <span class='help-block'><small><%= @input.instructions %></small></span>
-    <% end %>
-  </div>
-</div>
+<input name='<%= @input.inputName %>' type='<%= @input.inputType %>' placeholder='<%= @input.inputDisplay %>' value='<%= @input.value %>' <% if !@input.required then %>><% else %>required='required'><span class='required' title='<%=t("REQUIRED")%>'> *</span><% end %>

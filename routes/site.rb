@@ -12,6 +12,11 @@ class Legux < Sinatra::Base
     erb :error_page, :layout => false
   end
 
+  error 401 do
+    @error = t("globalerror.401_NOT_AUTHORIZED")
+    erb :error_page, :layout => false
+  end
+
   error do
     @error = t("globalerror.500_COULD_NOT_CONNECT")
     erb :error_page, :layout => false

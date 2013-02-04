@@ -11,6 +11,13 @@ class Legux < Sinatra::Base
     end
   end
 
+  # Any route that contains /admin/ can be accessed only by System Administrators
+  before /\/admin\// do
+    if session[:privileges] > 0 then
+      redirect to error(401)
+    end
+  end
+
   get '/secure/home' do
     halt erb (:home)
   end
@@ -39,9 +46,10 @@ class Legux < Sinatra::Base
 
   # All /users/ page will have a left navigation panel
   before '/secure/users/*' do
-    @leftnav = Array.new
-    @leftnav.push NavigationItem.new("/secure/users/create", t("users.CREATE_USERS"))
-    @leftnav.push NavigationItem.new("/secure/users/all", t("users.DISPLAY_ALL_USERS"))
+    nav = NavigationMenu.new(session[:privileges])
+    nav.addNavigationItem("/secure/users/admin/create", t("users.CREATE_USERS"))
+    nav.addNavigationItem("/secure/users/all", t("users.DISPLAY_ALL_USERS"))
+    @leftnav = nav.array
   end
 
   get '/secure/users/all' do
@@ -51,12 +59,12 @@ class Legux < Sinatra::Base
     halt erb (:display_all_template)
   end
 
-  get '/secure/users/create' do
+  get '/secure/users/admin/create' do
     createUserForm
     halt erb :form_template
   end
 
-  post '/secure/users/create' do
+  post '/secure/users/admin/create' do
     if params['password'] != params['passwordconfirm'] then
       @error = t("users.ERROR_PASSWORD_CONFIRMATION")
     else
@@ -66,6 +74,12 @@ class Legux < Sinatra::Base
     end
     createUserForm(@success ? nil : params)
     erb :form_template
+  end
+
+  # TODO: Use JS
+  get '/secure/users/edit' do
+    editUserForm
+    erb :form_template, :layout => false
   end
 
   # See the list of clients

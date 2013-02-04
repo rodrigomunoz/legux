@@ -1,0 +1,5 @@
+<select name='<%= @input.inputName %>' value='<%= @input.value %>'>
+  <% @input.options.each { |key, value| %>
+    <%= "<option value='#{value}'>#{key}</option>" %>
+  <% } %>
+</select>

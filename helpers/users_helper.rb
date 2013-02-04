@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def createUser(username, password, displayName, email, type)
+  def createUser(username, password, displayName, email, type = UserType::BASIC_USER)
     password_salt = BCrypt::Engine.generate_salt
     password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     display_name = displayName
@@ -26,7 +26,7 @@ module UsersHelper
   end
 
   def createAdministratorUser
-    createUser("administrator", "a", "Administrator", "", 0)
+    createUser("administrator", "a", "Administrator", "", UserType::ADMINISTRATOR)
   end
   module_function :createAdministratorUser
 
