@@ -6,6 +6,7 @@ require 'haml'
 require 'sequel'
 require 'mysql2'
 require 'bcrypt'
+require 'json'
 
 class Legux < Sinatra::Base
 

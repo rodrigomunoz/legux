@@ -23,7 +23,6 @@ Installation
 1. Run the application
  * ``bundle exec rackup config.ru``
  * The page will be in http://localhost:4567 by default
-
  
 Deployment in Heroku
 ------------
@@ -41,3 +40,11 @@ Deployment in Heroku
  * When not using it, make sure to change it back to ``0``. Heroku provides a limited number of free hours a month
  * Check the status with ``heroku ps``
  * Open the logs with ``heroku logs``
+
+If you have issues installing the JSON gem
+------------
+1. Download [Development Kit](http://rubyinstaller.org/downloads/)
+ * Unzip the file and open a command prompt on that folder
+ * ``ruby dk.rb init``
+ * ``ruby dk.rb install``
+ * ``gem install json``
