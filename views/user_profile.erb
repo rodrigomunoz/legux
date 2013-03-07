@@ -1,0 +1,16 @@
+<div class="user-profile"></div>
+
+<!-- Use Profile templates -->
+<script type="text/template" id="update-profile">
+  <form class="user-profile-form">
+    <h2><%= t("me.UPDATE_PROFILE") %></h2>
+    <label><%= t("users.DISPLAY_NAME") %></label>
+    <input type="text" name="displayName"  value="{{= profile.get('displayName') }}"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <hr />
+    <input type="hidden" name="id" value="{{= profile.id }}">
+    <button type="submit" class="btn"><%= t("buttons.UPDATE_BUTTON") %></button>
+  </form>
+</script>
+
+<!-- javaScript -->
+<script src="/js/user-profile.js"></script>

@@ -1,5 +1,4 @@
-footer.footer-fixed {
-   position:absolute;
+footer.footer-powered {
    text-align: right;
    vertical-align: middle;
    bottom:0;
@@ -14,4 +13,7 @@ p.middle{
 }
 .header-description{
     color: #5a5a5a;
+}
+.main-content{
+    min-height: 500px;
 }

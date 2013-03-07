@@ -11,3 +11,4 @@ require_relative 'form'
 
 # Enums
 require_relative 'user_type'
+require_relative 'input_type'

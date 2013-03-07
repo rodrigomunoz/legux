@@ -16,6 +16,18 @@ class FormInput
     @value = value
   end
 
+  def to_json(*a)
+    {
+      'json_class'   => self.class.name,
+      'type'         => @inputType,
+      'name'         => @inputName,
+      'label'        => @inputDisplay,
+      'instructions' => @instructions,
+      'required'     => @required,
+      'value'        => @value,
+    }.to_json(*a)
+  end
+
   def setValueFromParams(params)
     @value = params[@inputName]
   end

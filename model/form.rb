@@ -12,6 +12,16 @@ class Form
     @buttons = Array.new
   end
 
+  def to_json(*a)
+    {
+      'json_class' => self.class.name,
+      'title'      => @title,
+      'action'     => @action,
+      'inputs'     => @inputs,
+      'buttons'    => @buttons
+    }.to_json(*a)
+  end
+
   def addInput(inputName, inputDisplay, inputType, required, instructions = "", value = "")
     @inputs.push FormInput.new(inputName, inputDisplay, inputType, required, instructions, value)
   end

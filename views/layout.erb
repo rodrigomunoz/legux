@@ -2,13 +2,17 @@
 <html>
   <head>
   	<title><%= t("COMPANY_NAME") %></title>
-    <script src="/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
   </head>
   <body style="padding-top: 50px;">
+
+    <script src="/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/underscore-min.js"></script>
+    <script src="/lib/backbone-min.js"></script>
+    <script src="/js/scripts.js"></script>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -48,10 +52,8 @@
       </div>
     </div>
 
-	<div class="container">
-		<%if @error then %>
-		  <div class="alert alert-error"><%=@error%></div>
-        <% end %>
+	<div class="container main-content">
+		<div class="alert alert-error" style="display:none;"></div>
         <% if @success then %>
           <div class="alert alert-success"><%=@success%></div>
 		<% end %>
@@ -78,4 +80,6 @@
 
     <%= erb :footer %>
   </body>
+
+
 </html>
