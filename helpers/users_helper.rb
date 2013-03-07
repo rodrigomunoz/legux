@@ -1,48 +1,35 @@
 module UsersHelper
 
-  def createUser(username, password, displayName, email, type = UserType::BASIC_USER)
+  def checkPassword(password, passwordConfirm)
+    if password != passwordConfirm then
+      halt 422, t("users.ERROR_PASSWORD_CONFIRMATION").to_json
+    end
+  end
+
+  def createUser(username, password, passwordConfirm, displayName, email, type = UserType::BASIC_USER)
+    checkPassword(password, passwordConfirm)
     password_salt = BCrypt::Engine.generate_salt
     password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    display_name = displayName
-    if display_name.nil?
-      display_name = username
-    end
     user = User.create(
         :username => username,
         :password => password_hash,
         :passwordSalt => password_salt,
-        :displayName => display_name,
+        :displayName => displayName,
         :email => email,
         :type => type
     )
-  rescue Sequel::ValidationFailed => e
-    @error = e
-    false
   end
   module_function :createUser
 
-  def createUserFromParams
-    createUser(params[:username], params[:password], params[:displayname], params[:email], params[:type])
-  end
-
   def createAdministratorUser
-    createUser("administrator", "a", "Administrator", "", UserType::ADMINISTRATOR)
+    createUser("administrator", "a", "a", "Administrator", "", UserType::ADMINISTRATOR)
   end
   module_function :createAdministratorUser
 
-  def updateUserDisplayName(displayName)
-    user = User.filter(:username => session[:identity]).first
-    user.set(:displayName => displayName)
-    result = user.save # return nil if failure
-    if result then
-      session[:identityDisplay] = displayName
-      @success = t("me.SUCCESS_UPDATE")
-    else
-      @error = t("me.ERROR_UPDATE")
-    end
-  rescue Sequel::ValidationFailed
-    @error = t("me.ERROR_UPDATE")
+  def getMyUser
+    User.filter(:username => session[:identity]).first
   end
+  module_function :getMyUser
 
   def updateUserPassword(newPassword, confirmation)
     if params[:password] != params[:passwordconfirm] then

@@ -1,5 +1,6 @@
 class User < Sequel::Model
   plugin :validation_helpers
+  plugin :json_serializer
 
   def validate
     super
@@ -13,8 +14,12 @@ class User < Sequel::Model
     validates_format /(^$|\b[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}\b)/, :email, :message => I18n.t("sequel.ERROR_EMAIL_FORMAT")
   end
 
-  def self.displayable_data
-    select(:username, :displayName, :email, :type)
+  def self.get_users
+    select(:id, :username, :displayName, :email, :type)
+  end
+
+  def self.get_user(id)
+    get_users.where(:id => id).first
   end
 
 end

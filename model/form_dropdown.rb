@@ -14,6 +14,18 @@ class FormDropdown
     @value = value
   end
 
+  def to_json(*a)
+    {
+        'json_class'   => self.class.name,
+        'type'         => InputType::DROPDOWN_INPUT,
+        'name'         => @inputName,
+        'label'        => @inputDisplay,
+        'instructions' => @instructions,
+        'options'      => @options,
+        'value'        => @value,
+    }.to_json(*a)
+  end
+
   def setValueFromParams(params)
     @value = params[@inputName]
   end

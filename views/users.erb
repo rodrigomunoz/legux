@@ -1,0 +1,70 @@
+<div class="users"></div>
+
+<!-- User templates -->
+<script type="text/template" id="user-list-template">
+  <h2><%=t("users.DISPLAY_ALL_USERS") %></h2>
+  <a href="#/new" class="btn btn-primary"><%= t("buttons.NEW_USER_BUTTON") %></a>
+  <br/><br/>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th><%= t("users.USERNAME") %></th>
+      <th><%= t("users.DISPLAY_NAME") %></th>
+      <th><%= t("users.E_MAIL") %></th>
+      <th><%= t("users.TYPE") %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ _.each(users, function(user) { }}
+        <tr>
+          <td>{{= user.get('username') }}</td>
+          <td>{{= user.get('displayName') }}</td>
+          <td>{{= user.get('email') }}</td>
+          <td>{{= userTypes.get(user.get('type')) }}</td>
+          <td><a href="#/edit/{{= user.id }}" class="btn"><%= t("buttons.EDIT_BUTTON") %></a></td>
+        </tr>
+    {{ }); }}
+    </tbody>
+  </table>
+</script>
+
+<script type="text/template" id="edit-user-template">
+  <form class="edit-user-form">
+    <h2>
+      {{ if (user) { }}
+         <%=t("users.EDIT_USER")%>
+      {{ } else { }}
+         <%=t("users.CREATE_USER")%>
+      {{ }; }}
+    </h2>
+    <label><%= t("login.USERNAME") %></label>
+    <input type="text" name="username" value="{{= user ? user.get('username') : ''}}"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <span class='help-block'><small><%= t("users.USERNAME_INSTRUCTIONS") %></small></span>
+    {{ if (!user) { }}
+    <label><%= t("login.PASSWORD") %></label>
+    <input type="password" name="password"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <label><%= t("users.CONFIRM_PASSWORD") %></label>
+    <input type="password" name="passwordConfirm"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    {{ }; }}
+    <label><%= t("users.DISPLAY_NAME") %></label>
+    <input type="text" name="displayName"  value="{{= user ? user.get('displayName') : ''}}"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <label><%= t("users.E_MAIL") %></label>
+    <input type="text" name="email" value="{{= user ? user.get('email') : ''}}">
+    <label><%= t("users.TYPE") %></label>
+    <select name="type">
+      {{ _.each(userTypes.attributes, function(value, key){ }}
+      {{=   '<option value="' + key + '">' + value + '</option>'  }}
+      {{ }); }}
+    </select>
+    <hr />
+    <button type="submit" class="btn">{{= user ? '<%= t("buttons.UPDATE_BUTTON") %>' : '<%= t("buttons.CREATE_BUTTON") %>' }}</button>
+    {{ if (user) { }}
+    <input type="hidden" name="id" value="{{= user.id }}">
+    <button type="button" class="btn btn-danger delete"><%= t("buttons.DELETE_BUTTON") %></button>
+    {{ }; }}
+    </form>
+</script>
+
+<!-- javaScript -->
+<script src="/js/users.js"></script>
