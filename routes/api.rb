@@ -7,6 +7,7 @@ class Legux < Sinatra::Base
   end
 
   #TODO: Secure /api/users/ to admin only!!
+  # USERS ADMINISTRATION
   get '/api/users' do
     User.get_users.to_json
   end
@@ -19,7 +20,7 @@ class Legux < Sinatra::Base
     begin
       body = request_body
       createUser(body['username'], body['password'], body['passwordConfirm'], body['displayName'], body['email'], body['type'])
-      status 200
+      halt 200, t("users.SUCCESS_CREATION").to_json
     rescue Sequel::ValidationFailed => e
       halt 422, e.to_json
     end
@@ -28,7 +29,7 @@ class Legux < Sinatra::Base
   put '/api/users/:id' do
     begin
       User[params[:id]].update(request_body.reject{|k,v| k == 'id'})
-      status 200
+      halt 200, t("users.SUCCESS_UPDATE").to_json
     rescue Sequel::ValidationFailed => e
       halt 422, e.to_json
     end
@@ -36,23 +37,20 @@ class Legux < Sinatra::Base
 
   delete '/api/users/:id' do
     User[params[:id]].delete
-    status 200
+    halt 200, t("users.SUCCESS_DELETION").to_json
   end
 
+  # USER PROFILE
   get '/api/me/*' do
     getMyUser.to_json(:only=>[:id, :username, :displayName, :email])
   end
 
   put '/api/me/*' do
-    begin
-      getMyUser.update(request_body.reject{|k,v| k == 'id'}) || halt(422, t("me.ERROR_UPDATE").to_json)
-      status 200
-      t("me.SUCCESS_UPDATE").to_json
-    rescue Sequel::ValidationFailed => e
-      halt 422, e.to_json
-    end
+    body = request_body
+    updateMyProfile(body['password'], body['passwordConfirm'], body['displayName'])
   end
 
+  # USER TYPES
   get '/api/usertypes' do
     {
         UserType::BASIC_USER    => t("users.BASIC_USER"),
@@ -60,9 +58,4 @@ class Legux < Sinatra::Base
     }.to_json
   end
 
-  #TODO: Delete
-  get '/api/users/create/form' do
-    createUserForm
-    @form.to_json
-  end
 end

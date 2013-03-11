@@ -8,7 +8,6 @@ class Legux < Sinatra::Base
     if @error then
       halt erb :login_page, :layout => false
     else
-      # TODO: This doesn't work
       where_user_came_from = session[:previous_url] || '/'
       redirect to where_user_came_from
     end

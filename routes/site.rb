@@ -1,10 +1,10 @@
 class Legux < Sinatra::Base
   before /^(?!\/(login|logout))/ do
     if !session[:identity] then
-      session[:previous_url] = request['REQUEST_PATH']
-      #TODO: Don't show the message if path is '/'
-      #TODO: Redirect to previous path after login
-      @error = t("login.LOGIN_ERROR")
+      session[:previous_url] = request.path
+      if session[:previous_url] != '/'
+        @error = t("login.LOGIN_ERROR")
+      end
       halt erb :login_page, :layout => false
     end
   end

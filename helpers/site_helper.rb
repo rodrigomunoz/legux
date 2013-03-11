@@ -15,8 +15,8 @@ module SiteHelper
   # Display menu items for the user's dropdown
   def menuitems()
     menu = NavigationMenu.new(session[:privileges])
-    menu.addNavigationItem("/me/editprofile", t("nav.menu.EDIT_MY_PROFILE"))
-    menu.addNavigationItem("/me/changepassword", t("nav.menu.CHANGE_MY_PASSWORD"))
+    menu.addNavigationItem("/me", t("nav.menu.EDIT_MY_PROFILE"))
+    menu.addNavigationItem("/me#/password", t("nav.menu.CHANGE_MY_PASSWORD"))
     menu.addNavigationItem("/admin/users", t("nav.menu.SITE_ADMIN"))
     menu.addSeparator
     menu.addNavigationItem("/logout", t("nav.menu.LOGOUT"))

@@ -35,4 +35,11 @@ function showError(error) {
 
 function hideError() {
   $('.alert-error').hide();
+  $('.alert-success').hide();
+}
+
+function showSuccess(success) {
+  if (success) {
+    $('.alert-success').text(success).show();
+  }
 }

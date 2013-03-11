@@ -15,7 +15,6 @@ var UserTypes = Backbone.Collection.extend({
 var UserList = Backbone.View.extend({
     el: '.users',
     render: function() {
-        hideError();
         var that = this;
         var users = new Users();
         users.fetch({
@@ -76,7 +75,8 @@ var EditUser = Backbone.View.extend({
         var userDetails = $(ev.currentTarget).serializeObject();
         var user = new User();
         user.save(userDetails, {
-            success: function() {
+            success: function(model, response) {
+                showSuccess(response);
                 router.navigate('', {trigger: true});
             },
             error: function(model, response) {
@@ -88,7 +88,8 @@ var EditUser = Backbone.View.extend({
     deleteUser: function(ev){
         hideError();
         this.user.destroy({
-            success: function() {
+            success: function(model, response) {
+                showSuccess(response);
                 router.navigate('', {trigger: true});
             },
             error: function(model, response) {

@@ -5,6 +5,7 @@ module UsersHelper
       halt 422, t("users.ERROR_PASSWORD_CONFIRMATION").to_json
     end
   end
+  module_function :checkPassword
 
   def createUser(username, password, passwordConfirm, displayName, email, type = UserType::BASIC_USER)
     checkPassword(password, passwordConfirm)
@@ -31,24 +32,27 @@ module UsersHelper
   end
   module_function :getMyUser
 
-  def updateUserPassword(newPassword, confirmation)
-    if params[:password] != params[:passwordconfirm] then
-      @error = t("users.ERROR_PASSWORD_CONFIRMATION")
-    else
+  def updateMyProfile(password, passwordConfirm, displayName)
+    user = getMyUser
+    if !password.nil?
+      checkPassword(password, passwordConfirm)
       password_salt = BCrypt::Engine.generate_salt
-      password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
-      user = User.filter(:username => session[:identity]).first
+      password_hash = BCrypt::Engine.hash_secret(password, password_salt)
       user.set(:password => password_hash)
       user.set(:passwordSalt => password_salt)
-      result = user.save # return nil if failure
-      if result then
-        @success = t("me.SUCCESS_UPDATE")
-      else
-        @error = t("me.ERROR_UPDATE")
-      end
+    else
+      user.set(:displayName => displayName)
     end
-  rescue Sequel::ValidationFailed
-    @error = t("me.ERROR_UPDATE")
+    begin
+      result = user.save
+      if result.nil?
+        halt 400, t("me.ERROR_UPDATE").to_json
+      else
+        halt 200, t("me.SUCCESS_UPDATE").to_json
+      end
+    rescue Sequel::ValidationFailed => e
+      halt 400, e.to_json
+    end
   end
 
 end

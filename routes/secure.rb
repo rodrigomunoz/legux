@@ -11,21 +11,8 @@ class Legux < Sinatra::Base
     halt erb (:home)
   end
 
-  get '/me/editprofile' do
+  get '/me' do
     halt erb :user_profile
-    #updateDisplayNameForm
-    #halt erb :form_template
-  end
-
-  get '/me/changepassword' do
-    updatePasswordForm
-    halt erb :form_template
-  end
-
-  post '/me/changepassword' do
-    updateUserPassword(params[:password], params[:passwordconfirm])
-    updatePasswordForm
-    halt erb :form_template
   end
 
   # All /users/ page will have a left navigation panel

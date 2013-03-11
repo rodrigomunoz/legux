@@ -12,5 +12,19 @@
   </form>
 </script>
 
+<script type="text/template" id="change-password">
+  <form class="change-password-form">
+    <h2><%= t("me.CHANGE_MY_PASSWORD") %></h2>
+    <label><%= t("login.PASSWORD") %></label>
+    <input type="password" name="password"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <label><%= t("users.CONFIRM_PASSWORD") %></label>
+    <input type="password" name="passwordConfirm"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <hr />
+    <input type="hidden" name="id" value="{{= profile.id }}">
+    <button type="submit" class="btn"><%= t("buttons.UPDATE_BUTTON") %></button>
+  </form>
+</script>
+
+
 <!-- javaScript -->
 <script src="/js/user-profile.js"></script>

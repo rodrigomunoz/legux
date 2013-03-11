@@ -1,7 +1,7 @@
 module LoginHelper
 
   def username
-    session[:identityDisplay] ? session[:identityDisplay] : t("CLICK_TO_LOGIN")
+    session[:identityDisplay]
   end
 
   def loginAttempt
