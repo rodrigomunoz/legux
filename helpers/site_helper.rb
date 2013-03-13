@@ -9,6 +9,8 @@ module SiteHelper
   def navitems()
     nav = NavigationMenu.new(session[:privileges])
     nav.addNavigationItem("/", t("nav.HOME"))
+    nav.addNavigationItem("/admin/employees", t("nav.EMPLOYEES"))
+    nav.addNavigationItem("/admin/products", t("nav.PRODUCTS"))
     nav.array
   end
 

@@ -15,21 +15,20 @@ class Legux < Sinatra::Base
     halt erb :user_profile
   end
 
-  # All /users/ page will have a left navigation panel
-  #before '/users/*' do
-  #  nav = NavigationMenu.new(session[:privileges])
-  #  nav.addNavigationItem("/users/admin/create", t("users.CREATE_USERS"))
-  #  nav.addNavigationItem("/users/all", t("users.DISPLAY_ALL_USERS"))
-  #  @leftnav = nav.array
-  #end
-
   get '/admin/users' do
     halt erb :users
   end
 
-  # See the list of clients
-  get '/clients' do
-    Client.new
-    erb "This is a secret place that only <%=session[:identity]%> has access to!"
+  # See the list of employees
+  get '/admin/employees' do
+    @columns = [t("employees.FIRST_NAME"), t("employees.LAST_NAME"), t("employees.TYPE")]
+    halt erb :things
   end
+
+  # See the list of employees
+  get '/admin/products' do
+    @columns = [t("products.DESCRIPTION"), t("products.QUANTITY"), t("products.PRICE"), t("products.PACKAGING")]
+    halt erb :things
+  end
+
 end

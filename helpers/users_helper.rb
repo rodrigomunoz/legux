@@ -48,6 +48,7 @@ module UsersHelper
       if result.nil?
         halt 400, t("me.ERROR_UPDATE").to_json
       else
+        session[:identityDisplay] = displayName
         halt 200, t("me.SUCCESS_UPDATE").to_json
       end
     rescue Sequel::ValidationFailed => e

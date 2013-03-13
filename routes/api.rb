@@ -58,4 +58,13 @@ class Legux < Sinatra::Base
     }.to_json
   end
 
+  # EMPLOYEES
+  get '/api/employees' do
+    Employee.to_json
+  end
+
+  get '/api/employees/:id' do
+    Employee[:id].to_json
+  end
+
 end

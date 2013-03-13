@@ -12,7 +12,8 @@ en:
     ERROR_DESCRIPTION: "You are going to have to go Home and try again! Or contact the System Administrator for more information."
   nav:
     HOME: "Home"
-    SECRET: "Secret"
+    EMPLOYEES: "Employees"
+    PRODUCTS: "Products"
     menu:
       LOGIN: "Login"
       EDIT_MY_PROFILE: "Edit My Profile"
@@ -39,10 +40,8 @@ en:
     ERROR_UPDATE: "Update encountered an error. Please try again"
     CHANGE_MY_PASSWORD: "Change My Password"
   users:
-    CREATE_USERS: "Create Users"
-    DISPLAY_ALL_USERS: "Display All Users"
+    NEW_USER: "New User"
     EDIT_USER: "Edit User"
-    CREATE_USER: "Create User"
     USERNAME: "Username"
     USERNAME_INSTRUCTIONS: "Username should only contain lowercase character (a-z), numbers (0-9) and dots (.)"
     DISPLAY_NAME: "Display Name"
@@ -50,16 +49,28 @@ en:
     TYPE: "Privileges"
     CONFIRM_PASSWORD: "Password Confirmation"
     ERROR_PASSWORD_CONFIRMATION: "Both passwords should match"
+    SYSTEM_ADMINISTRATOR: "Administrator"
+    BASIC_USER: "Basic User"
     SUCCESS_CREATION: "User has been properly created"
     SUCCESS_DELETION: "User has been properly deleted"
     SUCCESS_UPDATE: "User has been properly updated"
-    SYSTEM_ADMINISTRATOR: "Administrator"
-    BASIC_USER: "Basic User"
+  employees:
+    FIRST_NAME: "First Name"
+    LAST_NAME: "Last Name"
+    TYPE: "Position"
+  products:
+    DESCRIPTION: "Description"
+    QUANTITY: "Quantity"
+    PRICE: "Price"
+    PACKAGING: "Packaging"
+  common:
+    DISPLAY_ALL: "Display All"
+    NEW_THING: "New"
+    EDIT_THING: "Edit"
   buttons:
     EDIT_BUTTON: "Edit"
     DELETE_BUTTON: "Delete"
     CREATE_BUTTON: "Create"
     UPDATE_BUTTON: "Update"
-    NEW_USER_BUTTON: "New User"
 
 

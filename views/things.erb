@@ -1,0 +1,36 @@
+<div class="things"></div>
+
+<!-- User templates -->
+<script type="text/template" id="thing-list-template">
+  <h2><%=t("common.DISPLAY_ALL") %></h2>
+  <a href="#/new" class="btn btn-primary"><%= t("common.NEW_THING") %></a>
+  <br/><br/>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <% for item in @columns %>
+          <th><%= item %></th>
+      <% end %>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ _.each(things, function(thing) { }}
+        <tr>
+        {{ var attributes = _.omit(thing.attributes, ['id', 'json_class'])        }}
+        {{ _.each(attributes, function(attribute) { }}
+          <td>{{= attribute }}</td>
+        {{ }); }}
+          <td><a href="#/edit/{{= thing.id }}" class="btn"><%= t("buttons.EDIT_BUTTON") %></a></td>
+        </tr>
+    {{ }); }}
+    </tbody>
+  </table>
+</script>
+
+<script type="text/template" id="edit-thing-template">
+  <h2>{{= thing ? '<%=t("common.EDIT_THING")%>' : '<%=t("common.NEW_THING")%>' }}</h2>
+</script>
+
+<!-- javaScript -->
+<script src="/js/things.js"></script>

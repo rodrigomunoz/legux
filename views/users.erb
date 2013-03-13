@@ -2,8 +2,8 @@
 
 <!-- User templates -->
 <script type="text/template" id="user-list-template">
-  <h2><%=t("users.DISPLAY_ALL_USERS") %></h2>
-  <a href="#/new" class="btn btn-primary"><%= t("buttons.NEW_USER_BUTTON") %></a>
+  <h2><%=t("common.DISPLAY_ALL") %></h2>
+  <a href="#/new" class="btn btn-primary"><%= t("users.NEW_USER") %></a>
   <br/><br/>
   <table class="table table-bordered table-striped">
     <thead>
@@ -35,7 +35,7 @@
       {{ if (user) { }}
          <%=t("users.EDIT_USER")%>
       {{ } else { }}
-         <%=t("users.CREATE_USER")%>
+         <%=t("users.NEW_USER")%>
       {{ }; }}
     </h2>
     <label><%= t("login.USERNAME") %></label>

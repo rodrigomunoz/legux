@@ -12,6 +12,7 @@ class Legux < Sinatra::Base
 
   configure do
     set :public_folder, Proc.new { File.join(root, "static") }
+    set :static_cache_control, [:public, :max_age => 300]
     enable :sessions
   end
 
@@ -29,8 +30,8 @@ class Legux < Sinatra::Base
 end
 
 require_relative 'database/create'
+require_relative 'database/error_messages'
 require_relative 'helpers/init'
 require_relative 'model/init'
 require_relative 'routes/init'
-require_relative 'database/error_messages'
 require_relative 'database/initialize'
