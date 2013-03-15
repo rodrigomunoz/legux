@@ -19,16 +19,10 @@ class Legux < Sinatra::Base
     halt erb :users
   end
 
-  # See the list of employees
-  get '/admin/employees' do
-    @columns = [t("employees.FIRST_NAME"), t("employees.LAST_NAME"), t("employees.TYPE")]
-    halt erb :things
-  end
-
-  # See the list of employees
-  get '/admin/products' do
-    @columns = [t("products.DESCRIPTION"), t("products.QUANTITY"), t("products.PRICE"), t("products.PACKAGING")]
-    halt erb :things
+  # See THINGS (Any other object)
+  # If object doesn't exist, then 404
+  get '/admin/:things' do
+    get_html_response(params[:things])
   end
 
 end

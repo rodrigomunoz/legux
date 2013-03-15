@@ -1,10 +1,12 @@
+var source_url = source_url || '';
+
 // OBJECTS COLLECTION AND MODEL
 var Things = Backbone.Collection.extend({
-    url: '/api/employees'
+    url: '/api/' + source_url
 });
 
 var Thing = Backbone.Model.extend({
-    urlRoot: '/api/employees'
+    urlRoot: '/api/' + source_url
 });
 
 // Display all things

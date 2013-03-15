@@ -58,13 +58,13 @@ class Legux < Sinatra::Base
     }.to_json
   end
 
-  # EMPLOYEES
-  get '/api/employees' do
-    Employee.to_json
+  # THINGS (Any other object)
+  get '/api/:thing' do
+    get_db_model(params[:thing]).to_json
   end
 
-  get '/api/employees/:id' do
-    Employee[:id].to_json
+  get '/api/:thing/:id' do
+    get_db_model(params[:thing])[:id].to_json
   end
 
 end

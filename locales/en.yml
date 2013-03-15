@@ -55,18 +55,27 @@ en:
     SUCCESS_DELETION: "User has been properly deleted"
     SUCCESS_UPDATE: "User has been properly updated"
   employees:
-    FIRST_NAME: "First Name"
-    LAST_NAME: "Last Name"
-    TYPE: "Position"
+    DISPLAY_ALL_TITLE: "Display All Employees"
+    NEW_TITLE: "New Employee"
+    EDIT_TITLE: "Edit Employee"
+    columns:
+      FIRST_NAME: "First Name"
+      LAST_NAME: "Last Name"
+      TYPE: "Position"
   products:
-    DESCRIPTION: "Description"
-    QUANTITY: "Quantity"
-    PRICE: "Price"
-    PACKAGING: "Packaging"
+    DISPLAY_ALL_TITLE: "Display All Products"
+    NEW_TITLE: "New Product"
+    EDIT_TITLE: "Edit Product"
+    columns:
+      DESCRIPTION: "Description"
+      QUANTITY: "Quantity"
+      PRICE: "Price"
+      PACKAGING: "Packaging"
   common:
     DISPLAY_ALL: "Display All"
     NEW_THING: "New"
     EDIT_THING: "Edit"
+    NO_ITEMS: "There are no items to show"
   buttons:
     EDIT_BUTTON: "Edit"
     DELETE_BUTTON: "Delete"
