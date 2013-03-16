@@ -1,5 +1,6 @@
 module SiteHelper
 
+  # Search for translations
   def t(*args)
     # Just a simple alias
     I18n.t(*args, locale: I18n.locale)
@@ -53,12 +54,13 @@ module SiteHelper
   # TODO: More robust
   def get_html_response(url)
     model = get_db_model(url) # Check first if URL is valid
-    @displayAllTitle = t(url + ".DISPLAY_ALL_TITLE")
-    @newTitle = t(url + ".NEW_TITLE")
-    @editTitle = t(url + ".EDIT_TITLE")
+    @display_all_title = t(url + ".DISPLAY_ALL_TITLE")
+    @new_title = t(url + ".NEW_TITLE")
+    @edit_title = t(url + ".EDIT_TITLE")
     @url = url
     @columns = get_columns(url)
-    @keys = model.columns.to_json
+    @keys = model.columns
+    @keys.delete(:id)
     halt erb :things
   end
 

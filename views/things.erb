@@ -2,8 +2,8 @@
 
 <!-- User templates -->
 <script type="text/template" id="thing-list-template">
-  <h2><%=@displayAllTitle %></h2>
-  <a href="#/new" class="btn btn-primary"><%=@newTitle %></a>
+  <h2><%=@display_all_title %></h2>
+  <a href="#/new" class="btn btn-primary"><%=@new_title %></a>
   <br/><br/>
   {{ if (things.length == 0) { }}
     <div class="alert alert-info"><%= t("common.NO_ITEMS") %></div>
@@ -33,12 +33,12 @@
 </script>
 
 <script type="text/template" id="edit-thing-template">
-  <h2>{{= thing ? '<%=@editTitle %>' : '<%=@newTitle %>' }}</h2>
+  <h2>{{= thing ? '<%=@edit_title %>' : '<%=@new_title %>' }}</h2>
   <form class="edit-thing-form">
-    {{ _.each(<%=@keys %>, function(key) { }}
-      <label>{{= key }}<label>
-      <input type="text" name="{{= key}}" value="{{= thing ? thing.get(key) : ''}}"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
-    {{ }); }}
+    <% @columns.each_with_index { |column, index| %>
+      <label><%= column %></label>
+      <input type="text" name="<%= @keys[index] %>" value="{{= thing ? thing.get('<%=@keys[index] %>') : ''}}"><span class='required' title='<%=t("REQUIRED")%>'> *</span>
+    <% } %>
     <hr />
     <button type="submit" class="btn">{{= thing ? '<%= t("buttons.UPDATE_BUTTON") %>' : '<%= t("buttons.CREATE_BUTTON") %>' }}</button>
 

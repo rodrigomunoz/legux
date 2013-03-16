@@ -56,4 +56,11 @@ module UsersHelper
     end
   end
 
+  def get_user_types
+    {
+        UserType::BASIC_USER    => t("users.BASIC_USER"),
+        UserType::ADMINISTRATOR => t("users.SYSTEM_ADMINISTRATOR"),
+    }
+  end
+
 end

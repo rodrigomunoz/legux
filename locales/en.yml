@@ -51,9 +51,6 @@ en:
     ERROR_PASSWORD_CONFIRMATION: "Both passwords should match"
     SYSTEM_ADMINISTRATOR: "Administrator"
     BASIC_USER: "Basic User"
-    SUCCESS_CREATION: "User has been properly created"
-    SUCCESS_DELETION: "User has been properly deleted"
-    SUCCESS_UPDATE: "User has been properly updated"
   employees:
     DISPLAY_ALL_TITLE: "Display All Employees"
     NEW_TITLE: "New Employee"
@@ -76,6 +73,9 @@ en:
     NEW_THING: "New"
     EDIT_THING: "Edit"
     NO_ITEMS: "There are no items to show"
+    SUCCESS_CREATION: "Creation was successful"
+    SUCCESS_DELETION: "Deletion was successful"
+    SUCCESS_UPDATE: "Update was successful"
   buttons:
     EDIT_BUTTON: "Edit"
     DELETE_BUTTON: "Delete"
